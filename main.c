@@ -351,11 +351,11 @@ void EXTI0_1_IRQHandler(void)
 	static uint32_t last_button_press = 0;
 	    uint32_t current_time = HAL_GetTick();
 
-	    // Check if the interrupt was triggered by Button 0 (PA0)
+	    // Check if the interrupt was triggered by Button 0 
 	    if (__HAL_GPIO_EXTI_GET_IT(Button0_Pin) != RESET)
 	    {
 	        // Check if it's been long enough since the last button press
-	        if (current_time - last_button_press >= 100) // Adjust the debounce delay as needed
+	        if (current_time - last_button_press >= 100) 
 	        {
 	            // Toggle the LED delay frequency between 1 Hz and 2 Hz
 	            if (delay_t == 1000) // Current delay is 1 Hz
@@ -389,14 +389,14 @@ void writeLCD(char *char_in){
 uint32_t pollADC(void){
   // TODO: Complete function body to get ADC value
 	uint32_t adc_value = 0;
-	    // Start the ADC conversion
+	    // Start ADC 
 	    HAL_ADC_Start(&hadc);
-	    // Wait for the conversion to complete
+	    // Wait conversion to complete
 	    if (HAL_ADC_PollForConversion(&hadc, HAL_MAX_DELAY) == HAL_OK) {
-	        // Read the ADC value
+	        // Read ADC value
 	        adc_value = HAL_ADC_GetValue(&hadc);
 	    }
-	    // Stop the ADC to save power (optional)
+	    // Stop 
 	    HAL_ADC_Stop(&hadc);
 	    return adc_value;
 }
